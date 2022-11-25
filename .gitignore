@@ -1,0 +1,5 @@
+node_modules
+api.http
+.env
+swagger.yaml
+rest-mobile
