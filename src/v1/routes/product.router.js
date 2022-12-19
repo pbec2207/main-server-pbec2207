@@ -14,7 +14,7 @@ module.exports = productRouter= (router) => {
   router.get('/categories', categoryController.getAllCategories)
   // product routes
   router.post('/seller/add-product', isAuthMobile, validation(addProductSchema),productController.addProduct)
-  router.put('/seller/update-product', isAuthMobile, validation(editProductSchema), productController.updateProduct)
+  router.put('/seller/update-product', isAuthMobile, productController.updateProduct)
   router.delete('/seller/delete-product/:id', isAdminMobile, productController.deleteProduct)
   router.get('/products', productController.getProducts)
   router.get('/category', productController.getProductByCategorySlug)

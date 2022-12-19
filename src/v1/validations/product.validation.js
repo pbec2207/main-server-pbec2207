@@ -28,8 +28,13 @@ var that = module.exports = {
     originPrice:yup
     .number()
     .positive()
-    .min(0)
-
+    .min(0),
+    releaseDate: yup.date().max(new Date(), "Future date not allowed").typeError("Invalid Started date"),
+    endDate: yup.date().default(null).when("started", {
+        is: yup.date().isValid(),
+        then: yup.date().min(yup.ref("started"), "Ended date must be later than Start date"),
+        otherwise: yup.date().nullable()
+    }).typeError("Invalid Ended date")
   }),
   editProductSchema: yup.object({
     product: yup.object({

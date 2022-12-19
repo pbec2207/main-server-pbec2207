@@ -72,7 +72,12 @@ module.exports = {
   "userId_required":"User Id is required",
   "otp_expired":"Otp is expired",
   "category_not_products":"This category hasn't any product",
-  "account_invalid":"Account not valid"
+  "account_invalid":"Account not valid",
+  "endDateAuction":"This product was time off the auction",
+  "sellerNotAuthorize":"You are not allowed to auction your product",
+  "price_auction_invalid":"The auction price must be greater than the current price",
+  "product_not_time_off":"This product is currently on auction",
+  "product_not_owner":"you cannot pay for the product you are not a winner"
   
   
 }

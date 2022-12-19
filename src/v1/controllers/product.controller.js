@@ -26,6 +26,8 @@ var that = module.exports = {
         category: product.category,
         quantity: product.quantity,
         city:product.city,
+        releaseDate:product.releaseDate,
+        endDate: product.endDate, 
         productPictures: _.isEmpty(product.productPictures)
         ? [
           {
@@ -81,32 +83,13 @@ var that = module.exports = {
     }
   },
   updateProduct: async (req, res) => {
-    const { product, slug } = req.body
+    const { slug, price } = req.body
     try {
       const payload = await productService.updateProduct({
-        name: product.name,
-        originPrice: product.originPrice,
-        summary: product.summary,
-        description: product.description,
-        category: product.category,
-        quantity: product.quantity,
-        productPictures: _.isEmpty(product.productPictures)
-        ? [
-          {
-            fileLink:'',
-            fileId:''
-          }
-        ]: product.productPictures,
-        description:product.description,
-        specs: [
-          {k:'author', v:product.author},
-          {k:'printLenth', v: product.printLength},
-          {k:'publisher', v:product.publisher},
-          {k:'language', v:product.language},
-          {k:'city', v:product.city},
-          {k:'publicationDate', v:product.publicationDate},
-        ]
-      }, slug, req.payload.seller._id)
+        slug: slug,
+        user: req.payload._id,
+        price: price
+      })
       res.json(payload)
     } catch (error) {
       res.status(error.status).json(error)

@@ -139,7 +139,7 @@ var that = module.exports = {
         })
         .populate({
           path: 'sellerId',
-          select:"-proof -isDisabled -updatedAt -specs"
+          select:"-proof -isDisabled -updatedAt -specs -local"
         })
         .lean()
 
@@ -212,29 +212,42 @@ var that = module.exports = {
       }
     })
   },
-  updateProduct: (product, slug, sellerId) => {
+  updateProduct: (product) => {
     return new Promise(async (resolve, reject) => {
       try {
+
+        const [productExisted, seller] = await Promise.all([
+          productModel.findOne({
+            slug: product.slug
+          }).lean(),
+          productModel.exists({
+            sellerId: product.user
+          })
+        ])
+
+        if(!productExisted) return reject(errorResponse(404, Message.product_not_found))
+        if(productExisted.currentPrice >= product.price) return reject(errorResponse(402, Message.price_auction_invalid)) 
+        if(seller) return reject(errorResponse(403, Message.sellerNotAuthorize))
+
         const producted = await productModel.findOneAndUpdate({
           $and:[
-            {slug: slug},
-            {sellerId: sellerId}
+            {slug: product.slug},
+            {endDate: {$gt: Date.now()}}
           ]
         },{
+          $push:{
+            history: {
+              user: product.user,
+              price: product.price
+            }
+          },
           $set:{
-            name:product.name,
-            price:product.price,
-            category:product.category,
-            discountPercent:product.discountPercent,
-            summary: product.summary,
-            description: product.description,
-            quantity: product.quantity,
-            productPictures: product.productPictures,
-            specs:product.specs
-          }
+            "currentPrice":product.price
+          },
+          
         }, {new: true})
         if(_.isEmpty(producted)){
-          return reject(errorResponse(404, Message.product_not_found))
+          return reject(errorResponse(404, Message.endDateAuction))
         }
         return resolve({
           data:{

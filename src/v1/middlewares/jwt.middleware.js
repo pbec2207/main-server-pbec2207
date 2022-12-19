@@ -63,6 +63,26 @@ var that = module.exports = {
         res.status(403).json(errorResponse(403, createError.NotFound().message));
     }
   },
+  isAuthShipper: async (req, res, next) => {
+    const token = req.cookies.access_token
+    if(token){
+      JWT.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
+        if(err){
+          if(err.name === "JsonWebTokenError"){
+            return res.status(409).json(errorResponse(409,createError.Unauthorized().message))
+          }
+          return res.status(409).json(errorResponse(409,createError.Unauthorized(err.message)))
+        }
+        if(!(payload.role === "shipper")){
+         return res.status(403).json(errorResponse(403, createError.Unauthorized(Message.invalid_permission)))
+        }
+        req.payload = payload
+        next()
+      })
+    }else{
+      return res.status(403).json(errorResponse(403, createError.NotFound().message))
+    }
+  },
   isAdminMobile : (req, res, next) => {
     if(req.payload?.role === "admin"){
         next();

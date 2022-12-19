@@ -53,7 +53,14 @@ const productSchema = new Schema({
     }
   ],
   city:{type: String, default: "hcm"},
-  release_date: Date,
+  releaseDate: {
+    type: Date,
+    default: Date.now()
+  },
+  endDate:{
+    type: Date,
+    require: true
+  },
   history:[
     {
       user: {

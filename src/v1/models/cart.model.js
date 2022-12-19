@@ -12,6 +12,7 @@ const cartSchema = new mongoose.Schema({
             required: true,
             ref: "products",
         },
+        wishlist:{type: Boolean, default: false},
         quantity: { type: Number, default: 1 },
         modifiedOn: {type: Date, default: Date.now()}
     }]
