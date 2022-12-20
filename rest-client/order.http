@@ -1,16 +1,16 @@
-@host = https://pbec2207-main-server.onrender.com/v1
-//@host = http://localhost:6000/v1
+//@host = https://pbec2207-main-server.onrender.com/v1
+@host = http://localhost:6000/v1
 @hostSendMail = https://pbec2207-external-server.onrender.com/checkstatus
 ### wake up  mail server
 GET {{hostSendMail}}
 
-### Login first - login mobile
+### Login first - login
 POST {{host}}/auth/login
 Content-Type: application/json
 
 {
-  "email":"testaccount1@gmail.com",
-  "password":"Hello123@"
+  "email":"baotrandinh100@gmail.com",
+  "password":"hello123@"
 }
 
 ### add order
@@ -35,22 +35,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1Y
 ### get details order by id
 POST {{host}}/order/get-detail
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE0ODQ5MTEsImV4cCI6MTY3NDA3NjkxMX0.p7AXrybEqGZ7ct2ZKDaonpzuAs4ICgsEDQgNEJrt0h0
 
 {
-  "orderId":"637e1878e76c717d9f03394c"
+  "orderId":"63a0e3e4e3f9439cd557be0b"
 }
 
 ### get all orders for user
 GET {{host}}/order/all?currentPage=1&limit=5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzZiZDAxMDc1MDg5Yjc4YTBiNWI2ZDciLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkhvYW5nIiwibGFzdE5hbWUiOiJUcnVuZyBOaGF0IiwicHJvZmlsZVBpY3R1cmUiOiJodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM_aWQ9MVVISlY5eFdvZktKTEdaOGNpU3lkeGpQY0VmdFZHcUhpIiwicm9sZSI6InVzZXIiLCJtZXRhIjp7InRvdGFsQnV5IjowLCJ0b3RhbENhbmNlbCI6MH0sInNwZWNpYWwiOltdLCJ0eXBlTG9naW4iOiJsb2NhbCIsImlhdCI6MTY3MDM4MDgxMSwiZXhwIjoxNjcwNDI0MDExfQ.lYA1_TM5dmU_YLcfkxlL4dABKJMAVZmUXf6Z-7IXVWg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE0ODQ5MTEsImV4cCI6MTY3NDA3NjkxMX0.p7AXrybEqGZ7ct2ZKDaonpzuAs4ICgsEDQgNEJrt0h0
 
 {
 }
 
 ### get all ordered by user
 GET {{host}}/order/all-ordered?currentPage=1&limit=5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE0ODQ5MTEsImV4cCI6MTY3NDA3NjkxMX0.p7AXrybEqGZ7ct2ZKDaonpzuAs4ICgsEDQgNEJrt0h0
 
 {
 
@@ -102,9 +102,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmM
 // this api to test, it does not have sercure
 PUT {{host}}/seller/status-order
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzNzkzMDFlMGU4YjgxNmViNjgiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiQmFvIFRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjcxNTc3MzY1LCJleHAiOjE2NzQxNjkzNjV9.367a9fahMkoV2DHW0_hVoLcbYFxSXeIfXeUJFGWsrKM
 
 {
-  "orderId":"63827430de2f879b99fe0cbf"
+  "orderId":"63a0e3e4e3f9439cd557be0c"
 }
 
 ### update status order by shipper

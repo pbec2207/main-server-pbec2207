@@ -503,7 +503,7 @@ var that = module.exports = {
           populate:[
             {
               path: "sellerId",
-              select: "info type logo _id slug"
+              select: "info"
             },
             {
               path:"category",
@@ -638,15 +638,12 @@ var that = module.exports = {
           },
           {
             $lookup: {
-              from: "sellers",
+              from: "users",
               localField: "product.sellerId",
               foreignField: "_id",
               pipeline : [
                 { $project: {
                   info:1,
-                  logo: 1,
-                  type: 1,
-                  slug: 1,
                   _id: 1
                 }}
               ],
@@ -670,6 +667,7 @@ var that = module.exports = {
             items: { $push: "$items" }
           }}
         ])
+        
         if(_.isEmpty(ordered)) return reject(errorResponse(404, createError.NotFound().message))
         let payload = []
         

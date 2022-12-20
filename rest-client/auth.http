@@ -14,9 +14,9 @@ POST {{host}}/auth/register
 Content-Type: application/json
 
 {
-  "email":"testaccount3@gmail.com",
+  "email":"shipper01@shipper.com",
   "password":"Hello123@",
-  "userName":"Test 03"
+  "userName":"Shipper 01"
 }
 
 ### active account
