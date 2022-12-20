@@ -1,0 +1,78 @@
+@host = https://pbec2207-main-server.onrender.com/v1
+//@host = http://localhost:6000/v1
+@hostSendMail = https://pbec2207-external-server.onrender.com/checkstatus
+
+
+
+### wake up  mail server
+GET {{hostSendMail}}
+
+### POST Register
+//note: Password must contain at least 8 characters, including letters, numbers and special characters.
+
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+  "email":"testaccount3@gmail.com",
+  "password":"Hello123@",
+  "userName":"Test 03"
+}
+
+### active account
+GET {{host}}/auth/active-account?token=cb3fd2f3-90e9-4a0a-a56a-2a4667074eed&userId=6380ab2285e8548c053d2e01
+
+{
+
+}
+
+### POST Login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email":"baotrandinh100@gmail.com",
+  "password":"hello123@"
+}
+
+### Refresh token
+GET {{host}}/auth/refresh-token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzgwYWIyMjg1ZTg1NDhjMDUzZDJlMDEiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiQmFvIFRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjY5Mzc2OTcxLCJleHAiOjE2NjkzODQxNzF9.Fiom1GFkKSOyw0ZOn2jww3apky1CzuSvHhOOwo6Cy2g 
+
+{
+
+}
+
+### Forgot Password - step 1: send email request password
+POST {{host}}/auth/email-reset-password
+Content-Type: application/json
+
+{
+  "email":"baotrandinh100@gmail.com"
+}
+### ENter otp code - step 2
+POST {{host}}/auth/otp-reset-password
+Content-Type: application/json
+
+{
+  "userId":"get from step 1",
+  "otp":"get from your email"
+}
+
+### Reset password - final step
+POST {{host}}/auth/reset-password
+Content-Type: application/json
+
+{
+  "userId":"get from step 2",
+  "token":"get from step 2",
+  "password":"your new password"
+}
+
+### logout to clear refresh token in redis
+GET {{host}}/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzNzkzMDFlMGU4YjgxNmViNjgiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiQmFvIFRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjY5Mzc3NDAzLCJleHAiOjE2NjkzODEwMDN9.WiR_gxpWyel3-yv6wmuQ6s7aPTOdoMNsQW0LTi9TAVk
+
+{
+
+}

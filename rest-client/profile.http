@@ -1,0 +1,58 @@
+@host = https://pbec2207-main-server.onrender.com/v1
+//@host = http://localhost:6000/v1
+@hostSendMail = https://pbec2207-external-server.onrender.com/checkstatus
+### wake up  mail server
+GET {{hostSendMail}}
+
+### Login first - login mobile
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email":"baotrandinh100@gmail.com",
+  "password":"hello123@"
+}
+
+### get profile of user
+GET {{host}}/profile/user-info-mobile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+
+{
+
+}
+
+### change password for local account
+POST {{host}}/profile/change-password-mobile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+
+{
+  "oldPassword":"Hello123@",
+  "newPassword":"123bao@@45"
+}
+
+### update profile
+POST http://localhost:4000/v1/profile/update-profile-mobile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+
+{
+  "profile":{
+    "address":"",
+    "phone":"",
+    "firstName":"Bao", // required
+    "lastName":"Tran", // required
+    "avatar":"",
+    "language":"vi", // required
+    "birthDay":"",
+    "gender":"male" //required
+  }
+}
+
+### upload single image
+POST https://extenal-services.herokuapp.com/api/upload-image
+Content-Type: multipart/form-data
+
+{
+  //file
+}

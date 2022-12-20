@@ -1,0 +1,65 @@
+@host = https://pbec2207-main-server.onrender.com/v1
+//@host = http://localhost:6000/v1
+@hostSendMail = https://pbec2207-external-server.onrender.com/checkstatus
+### wake up  mail server
+GET {{hostSendMail}}
+
+### Login first - login mobile
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email":"baotrandinh100@gmail.com",
+  "password":"hello123@"
+}
+
+### add to cart
+### default quantity 1, wishlist: false
+POST {{host}}/cart/add-to-cart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE0ODQ5MTEsImV4cCI6MTY3NDA3NjkxMX0.p7AXrybEqGZ7ct2ZKDaonpzuAs4ICgsEDQgNEJrt0h0
+
+{
+  "cartItem":{
+    "product":"639ed2da96bec2bc03da4400",
+    "wishlist": true
+  }
+}
+
+### get cart by userId
+GET {{host}}/cart/get-cart-items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzNzkzMDFlMGU4YjgxNmViNjgiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiQmFvIFRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjcxNDI5Mzc1LCJleHAiOjE2NzQwMjEzNzV9.KY9g2Ivkm1PPh6VWN2-sP_lghHlJtLIyklS63QnJ1iI
+
+{
+
+}
+
+### remove item from cart
+POST http://localhost:4000/v1/cart/remove-item
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY0MTdjNzVhY2FlYTBmMGVhOTI3ODMiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njc5MzUzODgsImV4cCI6MTY3MDUyNzM4OH0.T1gB1RvO53FpoY9hTNSRS67xaJJ5loGjUYNHF_eAyLc
+
+{
+  "cartItem":{
+    "product":"635bfc10416afefa9e841113"
+  }
+}
+
+### add multiple items into cart
+POST {{host}}/v1/cart/add-multiple-items
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzY0MTdjNzVhY2FlYTBmMGVhOTI3ODMiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njc5MzUzODgsImV4cCI6MTY3MDUyNzM4OH0.T1gB1RvO53FpoY9hTNSRS67xaJJ5loGjUYNHF_eAyLc
+
+{
+  "cartItems":[
+  {
+    "product":"635ae09ff56b4562b23011d3",
+  },
+  {
+    "product":"6367bcac6498d152f6f06108"
+  }, 
+  {
+    "product":"635bfc7c416afefa9e84111c",
+    "wishlist":true
+  }]
+}

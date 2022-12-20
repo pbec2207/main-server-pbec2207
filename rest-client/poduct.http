@@ -1,0 +1,102 @@
+@host = https://pbec2207-main-server.onrender.com/v1
+
+//@host = http://localhost:6000/v1
+@hostSendMail = https://pbec2207-external-server.onrender.com
+
+### wake up  mail server
+GET {{hostSendMail}}/checkStatus
+### upload image
+//note: remember wake up mail server first to avoid server sleeping
+POST {{hostSendMail}}/api/upload-image
+Content-Type: multipart/form-data
+
+{
+
+}
+
+### login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email":"baotrandinh100@gmail.com",
+  "password":"hello123@"
+}
+
+### login - account 2
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email":"baotrue123@gmail.com",
+  "password":"Hello123@"
+}
+
+### add category
+//note: login admin account
+POST {{host}}/admin/add-category
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzgwYWUwMmM3N2ViYmZjODgzNzY4ODQiLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsIm5pY2tOYW1lIjoiIiwidXNlck5hbWUiOiJhZG1pbmlzdHJhdG9yIiwicm9sZSI6ImFkbWluIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NjkzNzc2MzAsImV4cCI6MTY2OTM4MTIzMH0.g4xxmghouOpQf-wUzDCGjY8fB8FUdN0VhUqadybZM3k
+Content-Type: application/json
+
+{
+  "name":"Iphone"
+}
+
+
+### add product by user
+//note: login first
+//specs: this is an attribute of product
+//productPictures: it upload at upload server
+//price: reserve price
+POST {{host}}/seller/add-product
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzNzkzMDFlMGU4YjgxNmViNjgiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiQmFvIFRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjcxMzUyOTk1LCJleHAiOjE2NzEzNTY1OTV9.7hWQeXjxl9ti3KNfDru-WFWTKXe3o0PLqXaxBCHhSvI
+
+{
+  "name":"Iphone 4",
+  "originPrice":100,
+  "summary":"This is a summary of product",
+  "description":"This is a details of product",
+  "quantity":1,
+  "city":"hcm",
+  "productPictures":{
+    "fileLink":"link of product",
+    "fileId":"file id"
+  },
+  "releaseDate":"11:00 2022-03-25",
+  "endDate":"12:00 2022-04-25",
+  "category":"6380af46d3f811622b875f20",
+  "specs":[ 
+    {"author":"the author"},
+    {"height":250}
+  ]
+}
+### get categories
+GET {{host}}/categories
+
+### get all products by seller id, name, categoryId, summary, description
+### filter format: price[gt]=10 - get product that it have price > 10
+### note: limit 5 or 10, default 12
+GET {{host}}/products?name=i&limit=5&currentPage=1
+
+### get product by slug
+GET {{host}}/product/The-name-of-product-EckEeH90p
+
+### get products by slug of category
+### filter format: price[gt]=10 - get product that it have price > 10
+### note: limit 5 or 10, default 12
+GET {{host}}/category?slug=Iphone-aqZXw8MHq&limit=5&currentPage=1
+
+### search follow by category and name
+### note: keyword 1 character search follow first letter in database
+GET {{host}}/search?keyword=th
+
+### the auction by user
+PUT {{host}}/seller/update-product
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE0ODQ5MTEsImV4cCI6MTY3NDA3NjkxMX0.p7AXrybEqGZ7ct2ZKDaonpzuAs4ICgsEDQgNEJrt0h0
+
+{
+  "slug":"Iphone-4-mhwUa30k2",
+  "price":130
+}

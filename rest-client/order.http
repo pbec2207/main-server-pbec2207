@@ -1,0 +1,146 @@
+@host = https://pbec2207-main-server.onrender.com/v1
+//@host = http://localhost:6000/v1
+@hostSendMail = https://pbec2207-external-server.onrender.com/checkstatus
+### wake up  mail server
+GET {{hostSendMail}}
+
+### Login first - login mobile
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email":"testaccount1@gmail.com",
+  "password":"Hello123@"
+}
+
+### add order
+//note: shipping code set to default :(((
+POST {{host}}/order/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE0ODQ5MTEsImV4cCI6MTY3NDA3NjkxMX0.p7AXrybEqGZ7ct2ZKDaonpzuAs4ICgsEDQgNEJrt0h0
+
+{
+  "order":{
+    "addressId":"63a0d710108e12d2dd17951e",
+    "paymentType": "paypal",
+    "items":[
+      {
+        "productId":"639ed2da96bec2bc03da4400",
+        "shippingCode": 1
+      }
+    ]
+  }
+}
+
+### get details order by id
+POST {{host}}/order/get-detail
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+
+{
+  "orderId":"637e1878e76c717d9f03394c"
+}
+
+### get all orders for user
+GET {{host}}/order/all?currentPage=1&limit=5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzZiZDAxMDc1MDg5Yjc4YTBiNWI2ZDciLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkhvYW5nIiwibGFzdE5hbWUiOiJUcnVuZyBOaGF0IiwicHJvZmlsZVBpY3R1cmUiOiJodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM_aWQ9MVVISlY5eFdvZktKTEdaOGNpU3lkeGpQY0VmdFZHcUhpIiwicm9sZSI6InVzZXIiLCJtZXRhIjp7InRvdGFsQnV5IjowLCJ0b3RhbENhbmNlbCI6MH0sInNwZWNpYWwiOltdLCJ0eXBlTG9naW4iOiJsb2NhbCIsImlhdCI6MTY3MDM4MDgxMSwiZXhwIjoxNjcwNDI0MDExfQ.lYA1_TM5dmU_YLcfkxlL4dABKJMAVZmUXf6Z-7IXVWg
+
+{
+}
+
+### get all ordered by user
+GET {{host}}/order/all-ordered?currentPage=1&limit=5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+
+{
+
+}
+
+### get all orders cancel that it cancelled
+GET {{host}}/order/get-all-orders-cancel
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+
+{
+
+}
+
+### get all orders shipping of the user
+GET {{}}/order/all-orders-shipping
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+
+{
+
+}
+
+### get all orders completed of the user
+GET {{host}}/order/all-orders-completed
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+
+{
+
+}
+
+### cancel the order item by user
+POST {{host}}/order/cancel-order-item
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+
+{
+  "orderItemId":"637e7ceea5e0269881b3151e"
+}
+
+### cancel the order by user
+POST {{host}}/order/cancel-order
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzcyNzhmMDgwODc3ZjJlMzhkYmZlMTYiLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkJhbyIsImxhc3ROYW1lIjoiVHJhbiIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2Njg0NDY1NTgsImV4cCI6MTY3MTAzODU1OH0.PGmOOyQV_D7P7F6BBOve4Sxz5rVDvI_zB5bDS3HV-uc
+
+{
+  "orderId":"63827433de2f879b99fe0cf7"
+}
+
+### update status order by seller
+// this api to test, it does not have sercure
+PUT {{host}}/seller/status-order
+Content-Type: application/json
+
+{
+  "orderId":"63827430de2f879b99fe0cbf"
+}
+
+### update status order by shipper
+// this api to test, it does not have sercure
+PUT {{host}}/shipper/status-order
+Content-Type: application/json
+
+{
+  "orderId":"63827430de2f879b99fe0cbf"
+}
+
+### check status payment
+POST {{host}}/pay/check-status
+Content-Type: application/json
+Authorization: Bearer access_token
+
+{
+  "payId":"get from add order"
+}
+
+### test payment
+POST {{host}}/order/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzZiZDAxMDc1MDg5Yjc4YTBiNWI2ZDciLCJuaWNrTmFtZSI6IiIsImZpcnN0TmFtZSI6IkhvYW5nIiwibGFzdE5hbWUiOiJUcnVuZyBOaGF0IiwicHJvZmlsZVBpY3R1cmUiOiJodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM_aWQ9MVVISlY5eFdvZktKTEdaOGNpU3lkeGpQY0VmdFZHcUhpIiwicm9sZSI6InVzZXIiLCJtZXRhIjp7InRvdGFsQnV5IjowLCJ0b3RhbENhbmNlbCI6MH0sInNwZWNpYWwiOltdLCJ0eXBlTG9naW4iOiJsb2NhbCIsImlhdCI6MTY3MDMyMzA2MiwiZXhwIjoxNjcwMzY2MjYyfQ.7AndwHHTU6D_NUd87goZFNadlbEhIF2t3rrR6bUz5vE
+
+{
+  "order":{
+    "addressId":"638817b8c0ff15582fb011b7",
+    "paymentType": "paypal",
+    "items":[
+      {
+        "productId":"6362af171b406f830c670f64",
+        "quantity":2,
+        "shippingCode": 1
+      }
+    ]
+
+  }
+}
