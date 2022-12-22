@@ -33,8 +33,7 @@ var that  = module.exports = {
       const data = await authService.userRegisterWeb({
         email:xssFilter.inHTMLData(user.email),
         password:user.password,
-        userName:xssFilter.inHTMLData(user.userName),
-        gender:user.gender ? xssFilter.inHTMLData(user.gender) : 'male'
+        userName:xssFilter.inHTMLData(user.userName)
       })
       res.cookie('active_account', false,
       {
