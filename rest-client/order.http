@@ -22,7 +22,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1Y
 {
   "order":{
     "addressId":"63a3cd1e29d02de094034509",
-    "paymentType": "cod",
+    "paymentType": "paypal",
     "items":[
       {
         "productId":"63a3ca7129d02de0940344c1",
