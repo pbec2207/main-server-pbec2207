@@ -207,11 +207,13 @@ var that = module.exports = {
         
         const winnerList = await Promise.all(checkProductAuction)
 
+        console.log(winnerList)
         if(_.isEmpty(winnerList)){
           return reject(errorResponse(403, Message.product_not_time_off))
         }
         
         winnerList.forEach((value) => {
+          if(!value) reject(errorResponse(403, Message.product_not_time_off))
           if(value.history.at(-1).user.toString() !== userId){
             return reject(errorResponse(405, Message.product_not_owner))
           }

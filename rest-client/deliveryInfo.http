@@ -7,7 +7,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1Y
 
 {
   "address":{
-    "name":"Baby pig",
+    "name":"Baby pig 123",
     "zipCode": 63000,
     "phoneNumber":"05003539181",
     "address":"123/1 Hoang dieu 2, Tp. Thu Duc",
@@ -35,18 +35,18 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzNzkzMDFlMGU4YjgxNmViNjgiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiQmFvIFRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjcxNDI5Mzc1LCJleHAiOjE2NzQwMjEzNzV9.KY9g2Ivkm1PPh6VWN2-sP_lghHlJtLIyklS63QnJ1iI
 
 {
-  "addressId":"637540992b61b4d8b2f242fb"
+  "addressId":"63a0d710108e12d2dd17951e"
 }
 
 ### update delivery info
 PUT {{host}}/delivery/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzNzkzMDFlMGU4YjgxNmViNjgiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiQmFvIFRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjcxNDI5Mzc1LCJleHAiOjE2NzQwMjEzNzV9.KY9g2Ivkm1PPh6VWN2-sP_lghHlJtLIyklS63QnJ1iI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE2Nzk1MTksImV4cCI6MTY3MTc2NTkxOX0.6ZIyVlxDtOEEuxkK2O2QsK_oF4Z7bxIUMRvKTUr4sZQ
 
 {
-  "addressId":"63a003be062400f6bd4f4524",
+  "addressId":"63a3cd1e29d02de094034509",
   "address":{
-    "name":"Chuppy",
+    "name":"Chuppy 123",
     "zipCode": 63000,
     "phoneNumber":"0987654321",
     "address":"123/1 Hoang dieu 2, Tp. Thu Duc",
@@ -63,8 +63,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzN
 ### set default delivery info
 PUT {{host}}/delivery/set-default
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzNzkzMDFlMGU4YjgxNmViNjgiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiQmFvIFRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjcxNDI5Mzc1LCJleHAiOjE2NzQwMjEzNzV9.KY9g2Ivkm1PPh6VWN2-sP_lghHlJtLIyklS63QnJ1iI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE2Nzk1MTksImV4cCI6MTY3MTc2NTkxOX0.6ZIyVlxDtOEEuxkK2O2QsK_oF4Z7bxIUMRvKTUr4sZQ
 
 {
-  "addressId": "63a003be062400f6bd4f4524"
+  "addressId": "63a3cd1e29d02de094034509"
 }

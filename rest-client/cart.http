@@ -21,14 +21,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1Y
 
 {
   "cartItem":{
-    "product":"639ed2da96bec2bc03da4400",
+    "product":"63a3ca7129d02de0940344c1",
     "wishlist": true
   }
 }
 
 ### get cart by userId
 GET {{host}}/cart/get-cart-items
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzNzkzMDFlMGU4YjgxNmViNjgiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiQmFvIFRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjcxNDI5Mzc1LCJleHAiOjE2NzQwMjEzNzV9.KY9g2Ivkm1PPh6VWN2-sP_lghHlJtLIyklS63QnJ1iI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE0ODQ5MTEsImV4cCI6MTY3NDA3NjkxMX0.p7AXrybEqGZ7ct2ZKDaonpzuAs4ICgsEDQgNEJrt0h0
 
 {
 

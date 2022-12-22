@@ -17,15 +17,15 @@ Content-Type: application/json
 //note: shipping code set to default :(((
 POST {{host}}/order/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE0ODQ5MTEsImV4cCI6MTY3NDA3NjkxMX0.p7AXrybEqGZ7ct2ZKDaonpzuAs4ICgsEDQgNEJrt0h0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1YjEwOGUxMmQyZGQxNzk0ZmUiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiVGVzdCAwMSIsInJvbGUiOiJ1c2VyIiwibWV0YSI6eyJ0b3RhbEJ1eSI6MCwidG90YWxDYW5jZWwiOjB9LCJzcGVjaWFsIjpbXSwidHlwZUxvZ2luIjoibG9jYWwiLCJpYXQiOjE2NzE2Nzk1MTksImV4cCI6MTY3MTc2NTkxOX0.6ZIyVlxDtOEEuxkK2O2QsK_oF4Z7bxIUMRvKTUr4sZQ
 
 {
   "order":{
-    "addressId":"63a0d710108e12d2dd17951e",
-    "paymentType": "paypal",
+    "addressId":"63a3cd1e29d02de094034509",
+    "paymentType": "cod",
     "items":[
       {
-        "productId":"639ed2da96bec2bc03da4400",
+        "productId":"63a3ca7129d02de0940344c1",
         "shippingCode": 1
       }
     ]

@@ -50,10 +50,10 @@ Content-Type: application/json
 //price: reserve price
 POST {{host}}/seller/add-product
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzNzkzMDFlMGU4YjgxNmViNjgiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiQmFvIFRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjcxMzUyOTk1LCJleHAiOjE2NzEzNTY1OTV9.7hWQeXjxl9ti3KNfDru-WFWTKXe3o0PLqXaxBCHhSvI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EzYzhmMzI5ZDAyZGUwOTQwMzQ0YWMiLCJuaWNrTmFtZSI6IiIsInVzZXJOYW1lIjoiYmFvIHRyYW4iLCJyb2xlIjoidXNlciIsIm1ldGEiOnsidG90YWxCdXkiOjAsInRvdGFsQ2FuY2VsIjowfSwic3BlY2lhbCI6W10sInR5cGVMb2dpbiI6ImxvY2FsIiwiaWF0IjoxNjcxNjc4NDQ1LCJleHAiOjE2NzE3NjQ4NDV9.bStaYJ4apm5A4I8FOF3WVUw-RBjWye7o5PLh2eJpxJc
 
 {
-  "name":"Iphone 4",
+  "name":"Iphone 5",
   "originPrice":100,
   "summary":"This is a summary of product",
   "description":"This is a details of product",
@@ -64,7 +64,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzc5NDYzN
     "fileId":"file id"
   },
   "releaseDate":"11:00 2022-03-25",
-  "endDate":"12:00 2022-04-25",
+  "endDate":"15:00 2022-12-22",
   "category":"6380af46d3f811622b875f20",
   "specs":[ 
     {"author":"the author"},
@@ -80,7 +80,7 @@ GET {{host}}/categories
 GET {{host}}/products?name=i&limit=5&currentPage=1
 
 ### get product by slug
-GET {{host}}/product/The-name-of-product-EckEeH90p
+GET {{host}}/product/Iphone-5-7qNDgWNmf
 
 ### get products by slug of category
 ### filter format: price[gt]=10 - get product that it have price > 10
@@ -89,7 +89,7 @@ GET {{host}}/category?slug=Iphone-aqZXw8MHq&limit=5&currentPage=1
 
 ### search follow by category and name
 ### note: keyword 1 character search follow first letter in database
-GET {{host}}/search?keyword=th
+GET {{host}}/search?keyword=iph
 
 ### the auction by user
 PUT {{host}}/seller/update-product
@@ -98,5 +98,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EwZDU1Y
 
 {
   "slug":"Iphone-4-mhwUa30k2",
-  "price":130
+  "price":140
 }

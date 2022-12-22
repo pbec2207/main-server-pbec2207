@@ -31,8 +31,8 @@ POST {{host}}/auth/login
 Content-Type: application/json
 
 {
-  "email":"baotrandinh100@gmail.com",
-  "password":"hello123@"
+  "email":"testaccount1@gmail.com",
+  "password":"Hello123@"
 }
 
 ### Refresh token
@@ -48,15 +48,15 @@ POST {{host}}/auth/email-reset-password
 Content-Type: application/json
 
 {
-  "email":"baotrandinh100@gmail.com"
+  "email":"baotrue123@gmail.com"
 }
 ### ENter otp code - step 2
 POST {{host}}/auth/otp-reset-password
 Content-Type: application/json
 
 {
-  "userId":"get from step 1",
-  "otp":"get from your email"
+  "userId":"63a3c8f329d02de0940344ac",
+  "otp":"615017"
 }
 
 ### Reset password - final step
@@ -64,9 +64,9 @@ POST {{host}}/auth/reset-password
 Content-Type: application/json
 
 {
-  "userId":"get from step 2",
-  "token":"get from step 2",
-  "password":"your new password"
+  "userId":"63a3c8f329d02de0940344ac",
+  "token":"$2b$10$46Hk9gTfKi1qy6wOyHyYu.GsWTjWoDLtImMpmPTmsYCgBYlpYiMMG",
+  "password":"hello123@"
 }
 
 ### logout to clear refresh token in redis
