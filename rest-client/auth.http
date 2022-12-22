@@ -31,8 +31,8 @@ POST {{host}}/auth/login
 Content-Type: application/json
 
 {
-  "email":"testaccount1@gmail.com",
-  "password":"Hello123@"
+  "email":"baotrue123@gmail.com",
+  "password":"hello123@"
 }
 
 ### Refresh token

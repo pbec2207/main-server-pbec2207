@@ -25,13 +25,13 @@ const productResponse = (product) => {
     seller: product.sellerId,
     slug:product.slug,
     price:product.price,
-    discountPercent:product.discountPercent,
     summary:product.summary,
     description:product.description,
     category: product.category,
     quantity: product.quantity,
     productPictures:product.productPictures,
-    specs:specs
+    specs:specs,
+    ...product
   }
 }
 
